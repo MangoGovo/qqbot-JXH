@@ -1,0 +1,3 @@
+bot/*
+!bot/appsettings.json
+ws/data/*

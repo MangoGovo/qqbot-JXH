@@ -1,0 +1,6 @@
+sanic
+requests
+pandas
+xlrd
+openpyxl
+schedule
