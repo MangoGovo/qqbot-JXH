@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   bot:
     container_name: bot
@@ -30,57 +28,13 @@ services:
       - quote
     networks:
       - my_network
-  # rag:
-  #   container_name: rag
-  #   image: python:3.12-slim
-  #   restart: always
-  #   command: >
-  #     bash -c "pip install --upgrade pip &&
-  #              pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt &&
-  #              python RAG-qwen.py"
-  #   working_dir: /app
-  #   volumes:
-  #     - ./SimpleRAG:/app
-  #   ports:
-  #     - "5005:5005"
-  #   depends_on:
-  #     - qwen-free-api
-  #   networks:
-  #     - my_network
-
-  # qwen-free-api:
-  #   container_name: qwen-free-api
-  #   image: vinlic/qwen-free-api:latest
-  #   restart: always
-  #   ports:
-  #     - "5003:8000"
-  #   environment:
-  #     - TZ=Asia/Shanghai
-  #   networks:
-  #     - my_network
-
-  # quote:
-  #   container_name: quote-generator
-  #   build:
-  #     context: ./qq-quote-generator
-  #     dockerfile: Dockerfile
-  #   restart: always
-  #   working_dir: /app
-  #   ports:
-  #     - "5004:5000"
-  #   volumes:
-  #     - ./qq-quote-generator:/app
-  #   networks:
-  #     - my_network
 
   quote:
-    image: qq-quote:v2
-    restart: always
-    working_dir: /app
+    image: zhullyb/qq-quote-generator
+    container_name: qq-quote-generator
     ports:
       - "5004:5000"
-    volumes:
-      - ./qq-quote-generator:/app
+    restart: always
     networks:
       - my_network
 
