@@ -53,7 +53,7 @@ async def load_blacklist(app):
 @app.before_server_start
 async def load_botmsg(app):
     """加载机器人回复内容到本地内存"""
-    df = pd.read_excel('./data/data.xlsx')
+    df = pd.read_excel('./data/data.xlsx',header=None)
 
     botmsg = {}
     for _, row in df.iterrows():
@@ -470,5 +470,3 @@ async def qqbot(request, ws):
                 }
             }
             await ws.send(json.dumps(ret))
-
-
