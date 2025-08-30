@@ -1,17 +1,13 @@
+import asyncio
 import json
 import random
-import re
-import requests
-import base64
+from datetime import datetime, timedelta
+
 import pandas as pd
 import schedule
-import asyncio
-import threading
-import time
+from .request_quote import get_ai_meg, send_post_request
 from sanic import Sanic
 from sanic.log import logger
-from request_quote import send_post_request, get_ai_meg
-from datetime import datetime, timedelta
 
 app = Sanic('qqbot')
 app.ctx.last_ts = {}    # 记录每个人上次触发的时间戳
@@ -475,5 +471,4 @@ async def qqbot(request, ws):
             }
             await ws.send(json.dumps(ret))
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=False, auto_reload=True, workers=7)
+

@@ -1,5 +1,7 @@
-import requests
 import json
+
+import requests
+
 
 def send_post_request(url, data, content_type='application/json'):
     """

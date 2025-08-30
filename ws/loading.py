@@ -1,4 +1,6 @@
 import pandas as pd
+
+
 def load_botmsg():
     """加载机器人回复内容到本地内存"""
     df = pd.read_excel('data.xls')
