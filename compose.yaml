@@ -15,6 +15,8 @@ services:
   ws:
     build: .
     container_name: jxh-bot-ws
+    volumes:
+      - ./config.yaml:/app/config.yaml
     ports:
       - "8000:8000"
     restart: unless-stopped
