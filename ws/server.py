@@ -25,7 +25,7 @@ BLACKLIST_FILE_PATH = "./data/blacklist.json"
 SCHEDULED_JOBS_FILE_PATH = "./data/scheduled_jobs.json"
 
 
-@app.main_process_start
+@app.before_server_start
 async def init_flag(app):
     """初始化开关"""
     app.ctx.flag = {
@@ -35,7 +35,7 @@ async def init_flag(app):
     }
 
 
-@app.main_process_start
+@app.before_server_start
 async def load_config(app):
     config_path = "config.yaml"
     try:
@@ -48,7 +48,7 @@ async def load_config(app):
         logger.error(f"读取配置文件失败,{e}")
 
 
-@app.main_process_start
+@app.before_server_start
 async def load_admins(app):
     """加载管理员列表到本地内存"""
     try:
@@ -60,7 +60,7 @@ async def load_admins(app):
         logger.info("管理员文件未找到，初始化为空列表")
 
 
-@app.main_process_start
+@app.before_server_start
 async def load_blacklist(app):
     """加载黑名单到本地内存"""
     try:
@@ -72,7 +72,7 @@ async def load_blacklist(app):
         logger.info("黑名单文件未找到，初始化为空列表")
 
 
-@app.main_process_start
+@app.before_server_start
 async def load_botmsg(app):
     """加载机器人回复内容到本地内存"""
     config = app.ctx.config
@@ -99,7 +99,7 @@ async def load_botmsg(app):
     app.ctx.botmsg = botmsg
 
 
-@app.main_process_start
+@app.before_server_start
 async def load_scheduled_jobs(app):
     """加载定时任务列表到本地内存"""
     try:
