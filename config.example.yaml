@@ -1,0 +1,5 @@
+wps_excel:
+  # 分享链接
+  share_url: ""
+  # cookie中的sid参数
+  sid: ""

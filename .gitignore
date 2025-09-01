@@ -192,3 +192,5 @@ pyrightconfig.json
 .history
 .ionide
 .DS_STORE
+
+config.yaml
