@@ -332,7 +332,7 @@ async def process_q_command(ws, data):
 
 
 def key_word(message):
-    key = message.lower().replace("()", "").strip()
+    key = message.strip()
     msg = app.ctx.botmsg.get(key)
     return msg
 
